@@ -77,25 +77,4 @@ Accounts scoring 40–69 = **Watchlist** (amber)
 
 ---
 
-## 💬 Interview Talking Points
-
-> *"I built this because I realized BA work isn't just creating reports — it's about flagging problems before leadership asks. The early warning system means collections team can act when borrowers are still reachable, not after they've defaulted."*
-
-- **Problem identified:** Banks discover NPAs too late — by 90 DPD, recovery rates drop below 40%
-- **Solution:** Early warning at 30 DPD (60-day intervention window) using behavioral payment signals
-- **Business impact:** Enables proactive restructuring before NPA classification, reducing provisioning costs
-- **Tech choices:** SQLite for structured queries on 5K+ loan records; Streamlit for rapid stakeholder demos
-
----
-
-## 📈 Extend This Project
-
-- Connect to real data via MySQL/PostgreSQL  
-- Add ML model for NPA prediction (logistic regression / XGBoost)  
-- Build cohort analysis (loan performance by origination month)  
-- Add bureau score integration for risk-adjusted yield analysis  
-- Export alerts to Excel for collections team workflow  
-
----
-
 *Synthetic data — for demonstration purposes only*
