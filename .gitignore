@@ -1,6 +1,7 @@
-# Don't upload these
-data/
-models/
+# Keep data/ and models/ out — app auto-generates on first run
+data/*.db
+models/*.pkl
+models/scaler.pkl
 __pycache__/
 *.pyc
 .DS_Store
