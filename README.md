@@ -1,7 +1,7 @@
 # 🏦 Loan Portfolio Health Monitor
 
 > **BA Portfolio Project** – Executive dashboard with early warning system for NPA prevention  
-> **Stack:** Python · Streamlit · SQLite · Plotly
+> **Stack:** Python · Streamlit · SQLite · Plotly · SQL
 
 ---
 
