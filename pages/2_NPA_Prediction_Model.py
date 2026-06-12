@@ -71,8 +71,30 @@ def load_shap():
 
 # ── Check training done ───────────────────────────────────────────────────────
 if not os.path.exists(f"{MODELS_DIR}/model_meta.json"):
-    st.error("⚠️ Models not trained yet. Run `python train_model.py` first.")
-    st.stop()
+    st.info("⏳ First-time setup — generating data and training models. Takes 2–3 minutes on first load only.")
+    progress = st.progress(0, text="Starting...")
+    import subprocess, sys
+
+    os.makedirs(MODELS_DIR, exist_ok=True)
+    os.makedirs(DATA_DIR, exist_ok=True)
+
+    progress.progress(20, text="Generating synthetic loan data...")
+    r1 = subprocess.run([sys.executable, "generate_data.py"],
+                        capture_output=True, text=True)
+    if r1.returncode != 0:
+        st.error(f"Data generation failed:\n{r1.stderr}")
+        st.stop()
+
+    progress.progress(60, text="Training 3 models (LR, Random Forest, XGBoost)...")
+    r2 = subprocess.run([sys.executable, "train_model.py"],
+                        capture_output=True, text=True)
+    if r2.returncode != 0:
+        st.error(f"Model training failed:\n{r2.stderr}")
+        st.stop()
+
+    progress.progress(100, text="Done!")
+    st.success("✅ Models trained successfully. Loading dashboard...")
+    st.rerun()
 
 models, scaler = load_models()
 meta           = load_meta()
